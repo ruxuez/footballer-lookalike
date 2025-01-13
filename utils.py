@@ -4,7 +4,6 @@ from PIL import Image
 import torch
 from sqlalchemy import create_engine
 import pandas as pd
-from IPython.core.display import HTML
 from io import BytesIO
 from sqlalchemy import create_engine
 from PIL import Image
