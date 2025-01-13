@@ -81,7 +81,6 @@ if choice == "Home":
         ### Features:
         - Upload a photo for celebrity look-alike matching.
         - Take a live photo using your webcam.
-        - Browse streaming video to see look-alike matches in real-time.
         """
     )
     st.image(footer_img, use_column_width=True)
