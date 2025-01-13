@@ -27,8 +27,9 @@ if "disabled" not in st.session_state:
     st.session_state.disabled = False
 
 # Set the page layout to wide mode
-st.set_page_config(layout="wide")
-
+st.set_page_config(
+    page_title="Footballer Finder by EDB", page_icon="⚽", layout="wide"
+)
 # Sidebar setup for branding and user interface
 st.sidebar.image("source/edb_tagline_grey.png")
 st.sidebar.markdown(
