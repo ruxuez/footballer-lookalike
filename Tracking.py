@@ -3,7 +3,6 @@ import streamlit as st
 from utils import (  # Custom utility functions for face recognition and image processing
     facenet,
     find_similar_faces,
-    face_recognise,
 )
 from io import BytesIO
 from PIL import Image

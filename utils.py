@@ -1,6 +1,3 @@
-import face_recognition as frg
-import cv2
-import yaml
 from facenet_pytorch import InceptionResnetV1
 from facenet_pytorch import MTCNN
 from PIL import Image
@@ -34,15 +31,6 @@ connection_url = (
 
 # Create the engine
 engine = create_engine(connection_url)
-
-# Function to detect faces in an image and draw rectangles around them
-def face_recognise(image):
-    # Detect face locations in the image using face_recognition library
-    face_locations = frg.face_locations(image)
-    for top, right, bottom, left in face_locations:
-        # Draw a rectangle around each detected face
-        cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
-    return image
 
 
 class FacenetEmbedder:
