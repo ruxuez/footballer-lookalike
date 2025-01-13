@@ -118,6 +118,7 @@ stack-data==0.6.3
 streamlit==1.22.0
 streamlit-webrtc==0.47.9
 sympy==1.13.1
+setuptools
 tenacity==8.5.0
 threadpoolctl==3.5.0
 tokenizers==0.13.3
