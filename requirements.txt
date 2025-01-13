@@ -1,0 +1,12 @@
+opencv-python
+pyyaml
+streamlit==1.22.0
+face_recognition @ git+https://github.com/thetoby9944/face_recognition
+datasets
+facenet-pytorch
+requests
+Pillow
+psycopg2
+SQLAlchemy
+pandas
+numpy

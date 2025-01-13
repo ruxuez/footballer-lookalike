@@ -1,0 +1,6 @@
+.streamlit/
+dataset/
+.venv/
+__pycache__/
+Data_proprocessing/
+images/
