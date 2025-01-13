@@ -6,7 +6,7 @@ datasets
 facenet-pytorch
 requests
 Pillow
-psycopg2
+psycopg2-binary
 SQLAlchemy
 pandas
 numpy
