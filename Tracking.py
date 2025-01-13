@@ -1,6 +1,5 @@
 import requests
 import streamlit as st
-import cv2
 from utils import (  # Custom utility functions for face recognition and image processing
     facenet,
     find_similar_faces,
@@ -17,14 +16,6 @@ img_container = {"img": None, "original_image": None}
 
 # Footer image for the application
 footer_img = Image.open("source/EDB_banner.jpg").convert("RGB")
-
-
-# Callback function to process video frames and detect faces
-def video_frame_callback(frame):
-    img = frame.to_ndarray(format="bgr24")
-    with lock:
-        img_container["img"] = cv2.cvtColor(face_recognise(img), cv2.COLOR_BGR2RGB)
-    return frame
 
 
 # Function to disable a session state

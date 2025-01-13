@@ -1,4 +1,5 @@
 opencv-python
+cmake
 pyyaml
 streamlit==1.22.0
 face_recognition @ git+https://github.com/thetoby9944/face_recognition
