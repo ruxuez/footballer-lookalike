@@ -139,7 +139,7 @@ elif choice == "Picture":
                         <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
                         <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
-                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}'.format(row["height"]/100)}m </p>
+                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
                         <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
                         <p style='text-align: left; color: black;'><b>Foot:</b> {row['foot']} </p>
                         <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
@@ -211,7 +211,7 @@ elif choice == "Webcam":
                         <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
                         <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
-                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}'.format(row["height"]/100)}m </p>
+                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
                         <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
                         <p style='text-align: left; color: black;'><b>Foot:</b> {row['foot']} </p>
                         <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
