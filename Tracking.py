@@ -146,7 +146,7 @@ elif choice == "Picture":
                         <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Contract expires:</b> {row["contract"] or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
-                        <p style='text-align: left; color: black;'><b>More Info:</b> {row['url'] or "No Info"} </p>
+                        <p style='text-align: left; color: black;'><b>More Info: </b>{f'<a href="{row["url"]}" target="_blank" style="color: blue; text-decoration: none;">{row["url"]}</a>' if row["url"] else "No Info"}
                     """,
                         unsafe_allow_html=True)
             data_load_state.markdown(f"**{len(list(st.session_state.images_result))} Player Found**")
@@ -218,7 +218,8 @@ elif choice == "Webcam":
                         <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Contract expires:</b> {row["contract"] or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
-                        <p style='text-align: left; color: black;'><b>More Info:</b> {row['url'] or "No Info"} </p>
+                        <p style='text-align: left; color: black;'><b>More Info: </b>{f'<a href="{row["url"]}" target="_blank" style="color: blue; text-decoration: none;">{row["url"]}</a>' if row["url"] else "No Info"}
+ </p>
                     """,
                         unsafe_allow_html=True)
             data_load_state.markdown(f"**{len(list(st.session_state.images_result))} Player Found**")
