@@ -207,26 +207,19 @@ elif choice == "Webcam":
                     st.image(row["image_url"], width=300)
                 with col2:
                     st.markdown(
-                    """<h4 style='text-align: center; color: black;'>{0}</h4>
-                        <p style='text-align: center; color: black;'><b>Similarity:</b> {1} </p>
-                        <p style='text-align: left; color: black;'><b>Date of Birth:</b> {2} </p>
-                        <p style='text-align: left; color: black;'><b>Place of Birth:</b> {3}, {4}</p>
-                        <p style='text-align: left; color: black;'><b>Position:</b> {5} </p>
-                        <p style='text-align: left; color: black;'><b>Club:</b> {6} <b>joined on</b> {7} <b>signed from</b> {8} <b>until</b> {9}</p>
-                        <p style='text-align: left; color: black;'><b>Status:</b> {10} </p>
-                        <p style='text-align: left; color: black;'><b>Market Value: $</b>{11} </p>
-                        <p style='text-align: left; color: black;'><b>Url:</b> {12} </p>
-                    """.format(
-                                row['name'],                                 
-                                str(round(row["similarity"] * 100, 2)),
-                                row["date_of_birth"], 
-                                row["city_of_birth"], row["country_of_birth"],
-                                row['position'],
-                                row["club_name"], row["joined_on"], row["signed_from"] if row['signed_from'] else "No Info", row["contract"],
-                                row['status'] if row['status'] else "No Info",
-                                '{:,.2f}'.format(row['market_value']) if row['market_value'] else "No Info",
-                                row['url'] if row['url'] else "No Info",
-                            ),
+                    f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
+                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
+                        <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
+                        <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
+                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}'.format(row["height"]/100)}m </p>
+                        <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
+                        <p style='text-align: left; color: black;'><b>Foot:</b> {row['foot']} </p>
+                        <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
+                        <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                        <p style='text-align: left; color: black;'><b>Contract expires:</b> {row["contract"] or "No Info"}</p>
+                        <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
+                        <p style='text-align: left; color: black;'><b>More Info:</b> {row['url'] or "No Info"} </p>
+                    """,
                         unsafe_allow_html=True)
             data_load_state.markdown(f"**{len(list(st.session_state.images_result))} Player Found**")
         else:
