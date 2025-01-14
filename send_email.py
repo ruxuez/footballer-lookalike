@@ -51,12 +51,12 @@ def send_email_img(to, img_search, player_details):
                 <ul style="list-style: none; padding: 0;">
                     <li><b>Date of Birth:</b> {player_details["date_of_birth"]}</li>
                     <li><b>Place of Birth:</b> {player_details["city_of_birth"]}, {player_details["country_of_birth"]}</li>
+                    <li><b>Height:</b> {'{:,.2f}'.format(player_details["height"]/100)}m</li>
                     <li><b>Position:</b> {player_details["position"]}</li>
-                    <li><b>Club:</b> {player_details["club_name"]}</li>
+                    <li><b>Foot:</b> {player_details["foot"]}</li>
+                    <li><b>Current club:</b> {player_details["club_name"]}</li>
                     <li><b>Joined On:</b> {player_details["joined_on"]}</li>
-                    <li><b>Signed From:</b> {player_details["signed_from"] or "No Info"}</li>
-                    <li><b>Contract Until:</b> {player_details["contract"]}</li>
-                    <li><b>Status:</b> {player_details["status"] or "No Info"}</li>
+                    <li><b>Contract Expires:</b> {player_details["contract"]}</li>
                     <li><b>Market Value:</b> ${'{:,.2f}'.format(player_details['market_value']) or "No Info"}</li>
                     <li><b>More Info:</b> <a href="{player_details['url']}">{player_details['url'] or "No Info"}</a></li>
                 </ul>

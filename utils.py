@@ -82,8 +82,8 @@ def find_similar_faces(
     where_clause = f"WHERE {country_clause}" if country_clause else ""
 
     query = """SELECT name, city_of_birth, country_of_birth, date_of_birth, position, 
-                club_name, joined_on, signed_from, contract, market_value,
-                url,status,
+                club_name, joined_on, height, contract, market_value,
+                url,foot,
                 image_url, 1-(image_embedding <-> '{emb}') as similarity
                 FROM players_embeddings
                 {where_clause}
