@@ -52,14 +52,31 @@ st.sidebar.title("Filters")
 
 # Country filter - single-select
 country_options = [
-    "Any", "Albania", "Algeria", "Angola", "Bolivia", "Bosnia-Herzegovina", "Burkina Faso",
-    "Burundi", "Cameroon", "Cape Verde", "Comoros", "Cote d'Ivoire", "CSSR", 
-    "DR Congo", "Estonia", "French Guiana", "Guernsey", "Guinea", "Guinea-Bissau",
-    "Isle of Man", "Jugoslawien (SFR)", "Liberia", "Macedonia", "Madagascar", 
-    "Mali", "Malta", "Martinique", "Niger", "Northern Ireland", "Palestine", 
-    "Paraguay", "Romania", "Rwanda", "Serbia and Montenegro", "Sierra Leone", 
-    "Slovakia", "The Gambia", "Togo", "UdSSR", "Yugoslavia (Republic)", "Zaire"
+    "Any", "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", 
+    "Austria", "Azerbaijan", "Bahrain", "Bangladesh", "Belarus", "Belgium", "Benin", 
+    "Bermuda", "Bhutan", "Bolivia", "Bosnia-Herzegovina", "Brazil", "Bulgaria", 
+    "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Chile", 
+    "China", "Chinese Taipei", "Colombia", "Comoros", "Costa Rica", "Cote d'Ivoire", 
+    "Croatia", "CSSR", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", 
+    "DR Congo", "Ecuador", "Egypt", "England", "Estonia", "Ethiopia", "Finland", "France", 
+    "French Guiana", "Gabon", "Georgia", "Germany", "Ghana", "Greece", "Guernsey", "Guinea", 
+    "Guinea-Bissau", "Haiti", "Honduras", "Hongkong", "Hungary", "Iceland", "India", 
+    "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", 
+    "Japan", "Jordan", "Jugoslawien (SFR)", "Kazakhstan", "Kenya", "Korea, South", "Kuwait", 
+    "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Liberia", "Lithuania", "Luxembourg", 
+    "Macedonia", "Madagascar", "Malaysia", "Maldives", "Mali", "Malta", "Martinique", 
+    "Mauritania", "Mexico", "Moldova", "Mongolia", "Morocco", "Mozambique", "Myanmar", 
+    "Netherlands", "New Zealand", "Niger", "Nigeria", "Northern Ireland", "Norway", "Oman", 
+    "Palestine", "Panama", "Paraguay", "Philippines", "Poland", "Portugal", "Qatar", 
+    "Romania", "Russia", "Rwanda", "Saudi Arabia", "Scotland", "Senegal", 
+    "Serbia and Montenegro", "Sierra Leone", "Singapore", "Slovakia", "South Africa", 
+    "Spain", "Sudan", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", 
+    "The Gambia", "Togo", "Trinidad and Tobago", "Tunisia", "Türkiye", "UdSSR", "Uganda", 
+    "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", 
+    "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Wales", "Yugoslavia (Republic)", 
+    "Zaire", "Zambia", "Zimbabwe"
 ]
+
 selected_countries = st.sidebar.selectbox("Select Countries", country_options)
 
 # Sidebar form for email input and submission
