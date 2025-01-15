@@ -70,21 +70,29 @@ def reshape(batch):
 
 
 # Function to find similar faces in the database
-def find_similar_faces(facenet, face, country="Any"):
+def find_similar_faces(facenet, face, country="Any", competition="Any"):
     # Encode the given face into a 512-dimensional embedding
     emb = facenet.encode([face.convert("RGB")])[0]
     # Build the WHERE clause dynamically based on conditions
     country_clause = "" if country == "Any" else f"country_of_birth = '{country}'"
+    competition_clause = "" if competition == "Any" else f"c.name = '{competition}'"
 
-    where_clause = f"WHERE {country_clause}" if country_clause else ""
+    # Combine the clauses using logical AND if both are present
+    where_clause = " AND ".join(filter(None, [country_clause, competition_clause]))
+    where_clause = f"WHERE {where_clause}" if where_clause else ""
 
     # <=>: cosine distance, sqrt(512): mximum possible vector distance for 512 dimentional, *2: vectors range from -1 to 1
-    query = """SELECT name, city_of_birth, country_of_birth, date_of_birth, position, 
+    query = """SELECT p.name, city_of_birth, country_of_birth, date_of_birth, position, 
                 club_name, joined_on, height, market_value,
+                array_agg(c.name) AS competitions_names,
                 image_url, 1-(image_embedding <=> '{emb}')/(sqrt(512)*2) as similarity
-                FROM players_embeddings
+                FROM players_embeddings p
+                JOIN competitions c
+                ON c.id = ANY(p.competitions)
                 {where_clause}
-                 ORDER BY similarity desc LIMIT 1;""".format(
+                GROUP BY p.name, p.player_id, city_of_birth, country_of_birth, date_of_birth, position, 
+                club_name, joined_on, height, market_value, image_url, similarity
+                ORDER BY similarity desc LIMIT 1;""".format(
         emb=emb, where_clause=where_clause
     )
     print(query)

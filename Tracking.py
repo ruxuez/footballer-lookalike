@@ -196,7 +196,31 @@ country_options = [
     "Zimbabwe",
 ]
 
+# Competitions filter - single-select
+competitions_options = [
+    "Any",
+    "AFC Challenge League",
+    "AFC Champions League Elite",
+    "AFC Champions League Two",
+    "Bardzraguyn khumb",
+    "Egyptian Premier League",
+    "Oman Professional League",
+    "Premier League",
+    "Premier League 2",
+    "Premier League Closing Round",
+    "Premier League Opening Round",
+    "Premyer Liqa",
+    "Saudi Pro League",
+    "Scottish Premiership",
+    "Thai League",
+    "UAE Pro League",
+    "UEFA Champions League",
+    "UEFA Champions League Qualifying"
+]
+
+
 selected_countries = st.sidebar.selectbox("Select Countries", country_options)
+selected_competitions = st.sidebar.selectbox("Select League", competitions_options)
 
 # Sidebar form for email input and submission
 with st.sidebar.form("my_form", clear_on_submit=True):
@@ -272,6 +296,7 @@ elif choice == "Picture":
                 facenet,
                 st.session_state.img_search,
                 selected_countries,
+                selected_competitions,
             )
 
             data_load_state.markdown(
@@ -281,7 +306,7 @@ elif choice == "Picture":
                 container = st.container()
                 col1, col2 = container.columns([2, 3])
                 with col1:
-                    st.image(row["image_url"], width=300)
+                    st.image(row["image_url"], width=400)
                 with col2:
                     st.markdown(
                         f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
@@ -292,6 +317,7 @@ elif choice == "Picture":
                         <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
                         <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
                         <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                        <p style='text-align: left; color: black;'><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
                     """,
                         unsafe_allow_html=True,
@@ -352,6 +378,7 @@ elif choice == "Webcam":
                 facenet,
                 st.session_state.img_search,
                 selected_countries,
+                selected_competitions,
             )
 
             data_load_state.markdown(
@@ -361,7 +388,7 @@ elif choice == "Webcam":
                 container = st.container()
                 col1, col2 = container.columns([2, 3])
                 with col1:
-                    st.image(row["image_url"], width=300)
+                    st.image(row["image_url"], width=400)
                 with col2:
                     st.markdown(
                         f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
@@ -372,6 +399,7 @@ elif choice == "Webcam":
                         <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
                         <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
                         <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                        <p style='text-align: left; color: black;'><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
  </p>
                     """,
