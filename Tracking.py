@@ -281,7 +281,7 @@ elif choice == "Picture":
                 container = st.container()
                 col1, col2 = container.columns([2, 3])
                 with col1:
-                    st.image(row["image_url"], width=400)
+                    st.image(row["image_url"], width=300)
                 with col2:
                     st.markdown(
                         f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
@@ -290,12 +290,9 @@ elif choice == "Picture":
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
                         <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
                         <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
-                        <p style='text-align: left; color: black;'><b>Foot:</b> {row['foot']} </p>
                         <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
                         <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                        <p style='text-align: left; color: black;'><b>Contract expires:</b> {row["contract"] or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
-                        <p style='text-align: left; color: black;'><b>More Info: </b>{f'<a href="{row["url"]}" target="_blank" style="color: blue; text-decoration: none;">{row["url"]}</a>' if row["url"] else "No Info"}
                     """,
                         unsafe_allow_html=True,
                     )
@@ -373,12 +370,9 @@ elif choice == "Webcam":
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
                         <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
                         <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
-                        <p style='text-align: left; color: black;'><b>Foot:</b> {row['foot']} </p>
                         <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
                         <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                        <p style='text-align: left; color: black;'><b>Contract expires:</b> {row["contract"] or "No Info"}</p>
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
-                        <p style='text-align: left; color: black;'><b>More Info: </b>{f'<a href="{row["url"]}" target="_blank" style="color: blue; text-decoration: none;">{row["url"]}</a>' if row["url"] else "No Info"}
  </p>
                     """,
                         unsafe_allow_html=True,
