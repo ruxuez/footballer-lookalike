@@ -5,8 +5,6 @@ import torch
 from sqlalchemy import create_engine
 import pandas as pd
 from io import BytesIO
-from sqlalchemy import create_engine
-from PIL import Image
 import requests
 import streamlit as st
 
@@ -68,12 +66,11 @@ class FacenetEmbedder:
 # Function to preprocess and reshape a batch of images
 def reshape(batch):
     batch = [image.convert("RGB").resize((421, 632)) for image in batch]
-    return batch  
+    return batch
+
 
 # Function to find similar faces in the database
-def find_similar_faces(
-    facenet, face, country="Any"
-):
+def find_similar_faces(facenet, face, country="Any"):
     # Encode the given face into a 512-dimensional embedding
     emb = facenet.encode([face.convert("RGB")])[0]
     # Build the WHERE clause dynamically based on conditions
@@ -95,9 +92,7 @@ def find_similar_faces(
     r = pd.read_sql_query(query, con=engine)
     # Download images for the results and add them to the DataFrame
     r["image"] = r["image_url"].apply(
-        lambda x: Image.open(
-            BytesIO(requests.get(f"""{x}""").content)
-        )
+        lambda x: Image.open(BytesIO(requests.get(f"""{x}""").content))
     )
     # Convert the DataFrame to a dictionary with records orientation
     r = r.to_dict(orient="records")

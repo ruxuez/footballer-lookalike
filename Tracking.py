@@ -27,20 +27,9 @@ if "disabled" not in st.session_state:
     st.session_state.disabled = False
 
 # Set the page layout to wide mode
-st.set_page_config(
-    page_title="Footballer Finder by EDB", page_icon="⚽", layout="wide"
-)
+st.set_page_config(page_title="Footballer Finder by EDB", page_icon="⚽", layout="wide")
 # Sidebar setup for branding and user interface
 st.sidebar.image("source/edb_tagline_grey.png")
-st.sidebar.markdown(
-    """
-    <div style="font-size: medium; font-style: italic">
-    This is a  <b>EDB Look-alike Application</b> leveraging  <font color="green"> EDB Postgres MPP </font> and <font color="blue"> pgvector extension </font> for AI-powered Search.<br>
-    
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
 
 # Sidebar elements for user input and display
 st.sidebar.text("")
@@ -52,29 +41,159 @@ st.sidebar.title("Filters")
 
 # Country filter - single-select
 country_options = [
-    "Any", "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", 
-    "Austria", "Azerbaijan", "Bahrain", "Bangladesh", "Belarus", "Belgium", "Benin", 
-    "Bermuda", "Bhutan", "Bolivia", "Bosnia-Herzegovina", "Brazil", "Bulgaria", 
-    "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Chile", 
-    "China", "Chinese Taipei", "Colombia", "Comoros", "Costa Rica", "Cote d'Ivoire", 
-    "Croatia", "CSSR", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", 
-    "DR Congo", "Ecuador", "Egypt", "England", "Estonia", "Ethiopia", "Finland", "France", 
-    "French Guiana", "Gabon", "Georgia", "Germany", "Ghana", "Greece", "Guernsey", "Guinea", 
-    "Guinea-Bissau", "Haiti", "Honduras", "Hongkong", "Hungary", "Iceland", "India", 
-    "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", 
-    "Japan", "Jordan", "Jugoslawien (SFR)", "Kazakhstan", "Kenya", "Korea, South", "Kuwait", 
-    "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Liberia", "Lithuania", "Luxembourg", 
-    "Macedonia", "Madagascar", "Malaysia", "Maldives", "Mali", "Malta", "Martinique", 
-    "Mauritania", "Mexico", "Moldova", "Mongolia", "Morocco", "Mozambique", "Myanmar", 
-    "Netherlands", "New Zealand", "Niger", "Nigeria", "Northern Ireland", "Norway", "Oman", 
-    "Palestine", "Panama", "Paraguay", "Philippines", "Poland", "Portugal", "Qatar", 
-    "Romania", "Russia", "Rwanda", "Saudi Arabia", "Scotland", "Senegal", 
-    "Serbia and Montenegro", "Sierra Leone", "Singapore", "Slovakia", "South Africa", 
-    "Spain", "Sudan", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", 
-    "The Gambia", "Togo", "Trinidad and Tobago", "Tunisia", "Türkiye", "UdSSR", "Uganda", 
-    "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", 
-    "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Wales", "Yugoslavia (Republic)", 
-    "Zaire", "Zambia", "Zimbabwe"
+    "Any",
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Angola",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahrain",
+    "Bangladesh",
+    "Belarus",
+    "Belgium",
+    "Benin",
+    "Bermuda",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia-Herzegovina",
+    "Brazil",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Cape Verde",
+    "Chile",
+    "China",
+    "Chinese Taipei",
+    "Colombia",
+    "Comoros",
+    "Costa Rica",
+    "Cote d'Ivoire",
+    "Croatia",
+    "CSSR",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Dominican Republic",
+    "DR Congo",
+    "Ecuador",
+    "Egypt",
+    "England",
+    "Estonia",
+    "Ethiopia",
+    "Finland",
+    "France",
+    "French Guiana",
+    "Gabon",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Guernsey",
+    "Guinea",
+    "Guinea-Bissau",
+    "Haiti",
+    "Honduras",
+    "Hongkong",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Isle of Man",
+    "Israel",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Jugoslawien (SFR)",
+    "Kazakhstan",
+    "Kenya",
+    "Korea, South",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Liberia",
+    "Lithuania",
+    "Luxembourg",
+    "Macedonia",
+    "Madagascar",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Martinique",
+    "Mauritania",
+    "Mexico",
+    "Moldova",
+    "Mongolia",
+    "Morocco",
+    "Mozambique",
+    "Myanmar",
+    "Netherlands",
+    "New Zealand",
+    "Niger",
+    "Nigeria",
+    "Northern Ireland",
+    "Norway",
+    "Oman",
+    "Palestine",
+    "Panama",
+    "Paraguay",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saudi Arabia",
+    "Scotland",
+    "Senegal",
+    "Serbia and Montenegro",
+    "Sierra Leone",
+    "Singapore",
+    "Slovakia",
+    "South Africa",
+    "Spain",
+    "Sudan",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "The Gambia",
+    "Togo",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Türkiye",
+    "UdSSR",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Venezuela",
+    "Vietnam",
+    "Wales",
+    "Yugoslavia (Republic)",
+    "Zaire",
+    "Zambia",
+    "Zimbabwe",
 ]
 
 selected_countries = st.sidebar.selectbox("Select Countries", country_options)
@@ -88,7 +207,9 @@ with st.sidebar.form("my_form", clear_on_submit=True):
 # Main application logic based on input type
 # Home Page logic
 if choice == "Home":
-    st.title("Celebrity Look-Alike Finder: AI-Powered Footballer Matchmaking with PostgreSQL MPP and pgvector")
+    st.title(
+        "Celebrity Look-Alike Finder: AI-Powered Footballer Matchmaking with PostgreSQL MPP and pgvector"
+    )
     st.markdown(
         """
         ## About this application
@@ -105,15 +226,22 @@ if choice == "Home":
 elif choice == "Picture":
     # Rest of the code remains the same, just now you will need to filter or apply these selections
 
-    st.title("Face Recognition App")
+    st.title("EDB Look-alike Application")
+    st.write(
+        """
+    <div style="font-size: 25px;">
+    <b>Leveraging EDB Postgres MPP and pgvector extension for AI-powered Search.</b>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+    st.text("")
 
     c1, c2 = st.columns([2, 2])
 
     # File uploader for image input
     image_search_url = c1.text_input("Enter your Face url:", key="image")
-    uploaded_images = c1.file_uploader(
-        "Upload the image", type=["jpg", "png", "jpeg"]
-    )
+    uploaded_images = c1.file_uploader("Upload the image", type=["jpg", "png", "jpeg"])
     search_button = c1.button("Search")
 
     # State variables
@@ -130,7 +258,11 @@ elif choice == "Picture":
             st.session_state.img_search = Image.open(BytesIO(response.content))
 
         if st.session_state.img_search:
-            c2.image(st.session_state.img_search, width=200, caption="Face you would like to find")
+            c2.image(
+                st.session_state.img_search,
+                width=200,
+                caption="Face you would like to find",
+            )
 
             st.subheader("Results")
             data_load_state = st.empty()
@@ -147,12 +279,12 @@ elif choice == "Picture":
             )
             for row in st.session_state.images_result:
                 container = st.container()
-                col1, col2 = container.columns([2,3])
+                col1, col2 = container.columns([2, 3])
                 with col1:
                     st.image(row["image_url"], width=400)
                 with col2:
                     st.markdown(
-                    f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
+                        f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
                         <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
                         <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
@@ -165,18 +297,20 @@ elif choice == "Picture":
                         <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
                         <p style='text-align: left; color: black;'><b>More Info: </b>{f'<a href="{row["url"]}" target="_blank" style="color: blue; text-decoration: none;">{row["url"]}</a>' if row["url"] else "No Info"}
                     """,
-                        unsafe_allow_html=True)
-            data_load_state.markdown(f"**{len(list(st.session_state.images_result))} Player Found**")
+                        unsafe_allow_html=True,
+                    )
+            data_load_state.markdown(
+                f"**{len(list(st.session_state.images_result))} Player Found**"
+            )
         else:
             st.info("Please upload an image")
 
-    
     if submitted:
         try:
             send_email_img(
                 input_email,
                 st.session_state.img_search,
-                st.session_state.images_result[0]
+                st.session_state.images_result[0],
             )
             st.info("Email successfully sent!")
         except:
@@ -184,7 +318,16 @@ elif choice == "Picture":
 
 
 elif choice == "Webcam":
-    st.title("Face Recognition App")
+    st.title("EDB Look-alike Application")
+    st.write(
+        """
+    <div style="font-size: 25px;">
+    <b>Leveraging EDB Postgres MPP and pgvector extension for AI-powered Search.</b>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+    st.text("")
     st.write("Please allow access to your webcam and take a picture.")
 
     # Camera input for real-time face detection
@@ -219,12 +362,12 @@ elif choice == "Webcam":
             )
             for row in st.session_state.images_result:
                 container = st.container()
-                col1, col2 = container.columns([2,3])
+                col1, col2 = container.columns([2, 3])
                 with col1:
                     st.image(row["image_url"], width=300)
                 with col2:
                     st.markdown(
-                    f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
+                        f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
                         <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
                         <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
@@ -238,18 +381,20 @@ elif choice == "Webcam":
                         <p style='text-align: left; color: black;'><b>More Info: </b>{f'<a href="{row["url"]}" target="_blank" style="color: blue; text-decoration: none;">{row["url"]}</a>' if row["url"] else "No Info"}
  </p>
                     """,
-                        unsafe_allow_html=True)
-            data_load_state.markdown(f"**{len(list(st.session_state.images_result))} Player Found**")
+                        unsafe_allow_html=True,
+                    )
+            data_load_state.markdown(
+                f"**{len(list(st.session_state.images_result))} Player Found**"
+            )
         else:
             st.info("Please upload an image")
 
-    
     if submitted:
         try:
             send_email_img(
                 input_email,
                 st.session_state.img_search,
-                st.session_state.images_result[0]
+                st.session_state.images_result[0],
             )
             st.info("Email successfully sent!")
         except:

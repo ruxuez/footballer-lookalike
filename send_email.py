@@ -20,8 +20,12 @@ pswd = st.secrets["email"]["password"]
 def send_email_img(to, img_search, player_details):
     try:
         # Save the images locally for attachment
-        img_search_path = f"./images/search_{to}_{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
-        player_img_path = f"./images/player_{to}_{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+        img_search_path = (
+            f"./images/search_{to}_{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+        )
+        player_img_path = (
+            f"./images/player_{to}_{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
+        )
 
         img_search.save(img_search_path)
         player_details["image"].save(player_img_path)
@@ -95,7 +99,9 @@ def send_email_img(to, img_search, player_details):
         with open("source/edb_tagline_grey.png", "rb") as f:
             msgLogo = MIMEImage(f.read())
         msgLogo.add_header("Content-ID", "<image3>")
-        msgLogo.add_header("Content-Disposition", "inline", filename="source/edb_tagline_grey.png")
+        msgLogo.add_header(
+            "Content-Disposition", "inline", filename="source/edb_tagline_grey.png"
+        )
         msgRoot.attach(msgLogo)
 
         # Send email
