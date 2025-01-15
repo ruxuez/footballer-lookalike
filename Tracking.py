@@ -285,7 +285,7 @@ elif choice == "Picture":
                 with col2:
                     st.markdown(
                         f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
-                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
+                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))}% </p>
                         <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
                         <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
@@ -368,7 +368,7 @@ elif choice == "Webcam":
                 with col2:
                     st.markdown(
                         f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
-                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))} </p>
+                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))}% </p>
                         <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
                         <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
                         <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>

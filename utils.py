@@ -78,10 +78,11 @@ def find_similar_faces(facenet, face, country="Any"):
 
     where_clause = f"WHERE {country_clause}" if country_clause else ""
 
+    # <=>: cosine distance, sqrt(512): mximum possible vector distance for 512 dimentional, *2: vectors range from -1 to 1
     query = """SELECT name, city_of_birth, country_of_birth, date_of_birth, position, 
                 club_name, joined_on, height, contract, market_value,
                 url,foot,
-                image_url, 1-(image_embedding <-> '{emb}') as similarity
+                image_url, 1-(image_embedding <=> '{emb}')/(sqrt(512)*2) as similarity
                 FROM players_embeddings
                 {where_clause}
                  ORDER BY similarity desc LIMIT 1;""".format(
