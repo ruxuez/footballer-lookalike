@@ -55,11 +55,11 @@ def send_email_img(to, img_search, player_details):
                 <ul style="list-style: none; padding: 0;">
                     <li><b>Date of Birth:</b> {player_details["date_of_birth"]}</li>
                     <li><b>Place of Birth:</b> {player_details["city_of_birth"]}, {player_details["country_of_birth"]}</li>
-                    <li><b>Height:</b> {'{:,.2f}'.format(player_details["height"]/100)}m</li>
+                    <li><b>Height:</b> {('{:,.2f}m'.format(player_details["height"]/100) if player_details["height"] is not None else "No Info")}m</li>
                     <li><b>Position:</b> {player_details["position"]}</li>
                     <li><b>Current club:</b> {player_details["club_name"]}</li>
                     <li><b>Joined On:</b> {player_details["joined_on"]}</li>
-                    <li><b>Market Value:</b> ${'{:,.2f}'.format(player_details['market_value']) or "No Info"}</li>
+                    <li><b>Market Value:</b> ${('{:,.2f}'.format(player_details['market_value']) if player_details['market_value'] is not None else "No Info")}</li>
                 </ul>
             </div>
             

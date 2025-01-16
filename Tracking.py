@@ -41,159 +41,31 @@ st.sidebar.title("Filters")
 
 # Country filter - single-select
 country_options = [
-    "Any",
-    "Afghanistan",
-    "Albania",
-    "Algeria",
-    "Angola",
-    "Argentina",
-    "Armenia",
-    "Australia",
-    "Austria",
-    "Azerbaijan",
-    "Bahrain",
-    "Bangladesh",
-    "Belarus",
-    "Belgium",
-    "Benin",
-    "Bermuda",
-    "Bhutan",
-    "Bolivia",
-    "Bosnia-Herzegovina",
-    "Brazil",
-    "Bulgaria",
-    "Burkina Faso",
-    "Burundi",
-    "Cambodia",
-    "Cameroon",
-    "Canada",
-    "Cape Verde",
-    "Chile",
-    "China",
-    "Chinese Taipei",
-    "Colombia",
-    "Comoros",
-    "Costa Rica",
-    "Cote d'Ivoire",
-    "Croatia",
-    "CSSR",
-    "Cyprus",
-    "Czech Republic",
-    "Denmark",
-    "Dominican Republic",
-    "DR Congo",
-    "Ecuador",
-    "Egypt",
-    "England",
-    "Estonia",
-    "Ethiopia",
-    "Finland",
-    "France",
-    "French Guiana",
-    "Gabon",
-    "Georgia",
-    "Germany",
-    "Ghana",
-    "Greece",
-    "Guernsey",
-    "Guinea",
-    "Guinea-Bissau",
-    "Haiti",
-    "Honduras",
-    "Hongkong",
-    "Hungary",
-    "Iceland",
-    "India",
-    "Indonesia",
-    "Iran",
-    "Iraq",
-    "Ireland",
-    "Isle of Man",
-    "Israel",
-    "Italy",
-    "Jamaica",
-    "Japan",
-    "Jordan",
-    "Jugoslawien (SFR)",
-    "Kazakhstan",
-    "Kenya",
-    "Korea, South",
-    "Kuwait",
-    "Kyrgyzstan",
-    "Laos",
-    "Latvia",
-    "Lebanon",
-    "Liberia",
-    "Lithuania",
-    "Luxembourg",
-    "Macedonia",
-    "Madagascar",
-    "Malaysia",
-    "Maldives",
-    "Mali",
-    "Malta",
-    "Martinique",
-    "Mauritania",
-    "Mexico",
-    "Moldova",
-    "Mongolia",
-    "Morocco",
-    "Mozambique",
-    "Myanmar",
-    "Netherlands",
-    "New Zealand",
-    "Niger",
-    "Nigeria",
-    "Northern Ireland",
-    "Norway",
-    "Oman",
-    "Palestine",
-    "Panama",
-    "Paraguay",
-    "Philippines",
-    "Poland",
-    "Portugal",
-    "Qatar",
-    "Romania",
-    "Russia",
-    "Rwanda",
-    "Saudi Arabia",
-    "Scotland",
-    "Senegal",
-    "Serbia and Montenegro",
-    "Sierra Leone",
-    "Singapore",
-    "Slovakia",
-    "South Africa",
-    "Spain",
-    "Sudan",
-    "Sweden",
-    "Switzerland",
-    "Syria",
-    "Tajikistan",
-    "Tanzania",
-    "Thailand",
-    "The Gambia",
-    "Togo",
-    "Trinidad and Tobago",
-    "Tunisia",
-    "Türkiye",
-    "UdSSR",
-    "Uganda",
-    "Ukraine",
-    "United Arab Emirates",
-    "United Kingdom",
-    "United States",
-    "Uruguay",
-    "Uzbekistan",
-    "Vanuatu",
-    "Venezuela",
-    "Vietnam",
-    "Wales",
-    "Yugoslavia (Republic)",
-    "Zaire",
-    "Zambia",
-    "Zimbabwe",
+    "Any", "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", 
+    "Austria", "Azerbaijan", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Benin", 
+    "Bermuda", "Bhutan", "Bolivia", "Bonaire", "Bosnia-Herzegovina", "Brazil", "Brunei Darussalam", 
+    "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", 
+    "Central African Republic", "Chad", "Chile", "China", "Chinese Taipei", "Colombia", "Comoros", 
+    "Congo", "Congo DR", "Cookinseln", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Curacao", 
+    "Cyprus", "Czech Republic", "Denmark", "Dominica", "Dominican Republic", "DR Congo", "Ecuador", 
+    "Egypt", "El Salvador", "England", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", 
+    "Faroe Island", "Finland", "France", "French Guiana", "Gabon", "Georgia", "Germany", "Ghana", 
+    "Greece", "Grenada", "Guadeloupe", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", 
+    "Haiti", "Honduras", "Hongkong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", 
+    "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Korea", 
+    "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Liberia", "Liechtenstein", 
+    "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", 
+    "Martinique", "Mauritania", "Mexico", "Moldova", "Montenegro", "Montserrat", "Morocco", "Mozambique", 
+    "Myanmar", "Namibia", "Nepal", "Netherlands", "New Zealand", "Niger", "Nigeria", "Northern Ireland", 
+    "North Macedonia", "Norway", "Oman", "Pakistan", "Palästina", "Palestine", "Panama", "Paraguay", "Peru", 
+    "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Romania", "Russia", "Rwanda", "Saint-Martin", 
+    "Samoa", "San Marino", "Saudi Arabia", "Scotland", "Scottland", "Senegal", "Serbia", "Sierra Leone", 
+    "Singapore", "Slovakia", "Slovenia", "Somalia", "South", "South Africa", "Southern Sudan", "Spain", 
+    "St. Kitts & Nevis", "St. Kitts &Nevis", "St. Lucia", "St. Vincent & Grenadinen", "Sudan", "Suriname", 
+    "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "The Gambia", "Togo", 
+    "Trinidad and Tobago", "Tunisia", "Turkey", "Türkiye", "Uganda", "Ukraine", "United Arab Emirates", 
+    "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Wales", 
+    "Yemen", "Zambia", "Zimbabwe"
 ]
 
 # Competitions filter - single-select
@@ -215,12 +87,92 @@ competitions_options = [
     "Thai League",
     "UAE Pro League",
     "UEFA Champions League",
-    "UEFA Champions League Qualifying"
+    "UEFA Champions League Qualifying",
+    # Women competitions
+    "1. deild kvenna",
+    "1. Division",
+    "1. Divisjon",
+    "1. liga žen",
+    "2. Bundesliga",
+    "2. Frauen Bundesliga",
+    "Adran Premier",
+    "A-League Women",
+    "A Lyga",
+    "Besta deild kvenna",
+    "Brasileirão Feminino",
+    "Bundesliga",
+    "Campeonato Nacional Feminino",
+    "Chinese Women’s Football League",
+    "Chinese Women’s Super League",
+    "Damallsvenskan",
+    "Deildin kvinnur",
+    "Division 1 Mellersta",
+    "Division 1 Norra",
+    "Division 1 Södra",
+    "Ekstraliga",
+    "Elitettan",
+    "Eredivisie Vrouwen",
+    "Frauen Bundesliga",
+    "Future League",
+    "Hamburg Oberliga",
+    "Hessenliga",
+    "Kadın Futbol Süper Ligi",
+    "Kansallinen Liiga",
+    "Kvindeliga",
+    "Liga MX Apertura",
+    "Mittelrheinliga",
+    "Molodezhnaya Liga Gruppa B",
+    "Molodezhnaya Liga Gruppa C",
+    "Molodezhnaya Liga Gruppa D",
+    "Naiste Meistriliiga",
+    "Naisten Ykkönen",
+    "Nationalliga B",
+    "Niederrheinliga",
+    "Női NB I",
+    "NWSL",
+    "Oberliga Baden-Württemberg",
+    "Oberliga Niedersachsen Ost",
+    "Oberliga Niedersachsen West",
+    "Oberliga Schleswig-Holstein",
+    "Persha Liga A",
+    "Persha Liga B",
+    "Pirma Lyga",
+    "Première Ligue",
+    "Premijer Ženska Liga BiH",
+    "Primera División Femenina",
+    "Primera Federación",
+    "Regionalliga Nord",
+    "Regionalliga Nordost",
+    "Regionalliga Süd",
+    "Regionalliga Südwest",
+    "Regionalliga West",
+    "Seconde Ligue",
+    "Segunda Federación Grupo Norte",
+    "Segunda Federación Grupo Sur",
+    "Serie A",
+    "Serie B",
+    "Super League",
+    "Superliga",
+    "SWPL 1",
+    "SWPL 2",
+    "Toppserien",
+    "WE League",
+    "Westfalenliga",
+    "Wiener Frauen-Landesliga",
+    "WK League",
+    "Women’s Championship",
+    "Women’s League",
+    "Women’s Premier Division",
+    "Women’s Premiership",
+    "Women’s Super League",
 ]
 
+# Gender filter - single-select
+genders_options = ["Any", "Male", "Female"]
 
 selected_countries = st.sidebar.selectbox("Select Countries", country_options)
 selected_competitions = st.sidebar.selectbox("Select League", competitions_options)
+selected_genders = st.sidebar.selectbox("Select Gender", genders_options)
 
 # Sidebar form for email input and submission
 with st.sidebar.form("my_form", clear_on_submit=True):
@@ -297,6 +249,7 @@ elif choice == "Picture":
                 st.session_state.img_search,
                 selected_countries,
                 selected_competitions,
+                selected_genders,
             )
 
             data_load_state.markdown(
@@ -309,16 +262,17 @@ elif choice == "Picture":
                     st.image(row["image_url"], width=400)
                 with col2:
                     st.markdown(
-                        f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
-                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))}% </p>
-                        <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
-                        <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
-                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
-                        <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
-                        <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
-                        <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                        <p style='text-align: left; color: black;'><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
-                        <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
+                        f"""<h3 style='text-align: center; color: black;'>{row["name"]}</h3>
+                        <h4 style='text-align: center; color: black;'>{str(round(row["similarity"] * 100, 2))}%</h4>
+                        <p style='text-align: center; color: black;'><b>Similarity Match</b></p>
+                        <p style='text-align: center; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
+                        <p style='text-align: center; color: black;'><b>Place of Birth:</b> {', '.join(filter(None, [row["city_of_birth"], row["country_of_birth"]]))}</p>
+                        <p style='text-align: center; color: black;'><b>Height:</b> {('{:,.2f}m'.format(row["height"]/100) if row["height"] is not None else "No Info")} </p>
+                        <p style='text-align: center; color: black;'><b>Position:</b> {row['position']} </p>
+                        <p style='text-align: center; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
+                        <p style='text-align: center; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                        <p style='text-align: center; color: black;'><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
+                        <p style='text-align: center; color: black;'><b>Market Value: $</b>{('{:,.2f}'.format(row['market_value']) if row['market_value'] is not None else "No Info")} </p>
                     """,
                         unsafe_allow_html=True,
                     )
@@ -379,6 +333,7 @@ elif choice == "Webcam":
                 st.session_state.img_search,
                 selected_countries,
                 selected_competitions,
+                selected_genders
             )
 
             data_load_state.markdown(
@@ -391,16 +346,17 @@ elif choice == "Webcam":
                     st.image(row["image_url"], width=400)
                 with col2:
                     st.markdown(
-                        f"""<h4 style='text-align: center; color: black;'>{row["name"]}</h4>
-                        <p style='text-align: center; color: black;'><b>Similarity:</b> {str(round(row["similarity"] * 100, 2))}% </p>
-                        <p style='text-align: left; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
-                        <p style='text-align: left; color: black;'><b>Place of Birth:</b> {row["city_of_birth"]}, {row["country_of_birth"]}</p>
-                        <p style='text-align: left; color: black;'><b>Height:</b> {'{:,.2f}m'.format(row["height"]/100) or "No Info"} </p>
-                        <p style='text-align: left; color: black;'><b>Position:</b> {row['position']} </p>
-                        <p style='text-align: left; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
-                        <p style='text-align: left; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                        <p style='text-align: left; color: black;'><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
-                        <p style='text-align: left; color: black;'><b>Market Value: $</b>{'{:,.2f}'.format(row['market_value']) or "No Info"} </p>
+                        f"""<h3 style='text-align: center; color: black;'>{row["name"]}</h3>
+                        <h4 style='text-align: center; color: black;'>{str(round(row["similarity"] * 100, 2))}%</h4>
+                        <p style='text-align: center; color: black;'><b>Similarity Match</b></p>
+                        <p style='text-align: center; color: black;'><b>Date of Birth:</b> {row["date_of_birth"]} </p>
+                        <p style='text-align: center; color: black;'><b>Place of Birth:</b> {', '.join(filter(None, [row["city_of_birth"], row["country_of_birth"]]))}</p>
+                        <p style='text-align: center; color: black;'><b>Height:</b> {('{:,.2f}m'.format(row["height"]/100) if row["height"] is not None else "No Info")} </p>
+                        <p style='text-align: center; color: black;'><b>Position:</b> {row['position']} </p>
+                        <p style='text-align: center; color: black;'><b>Current Club:</b> {row["club_name"]}</p>
+                        <p style='text-align: center; color: black;'><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                        <p style='text-align: center; color: black;'><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
+                        <p style='text-align: center; color: black;'><b>Market Value: $</b>{('{:,.2f}'.format(row['market_value']) if row['market_value'] is not None else "No Info")} </p>
  </p>
                     """,
                         unsafe_allow_html=True,
