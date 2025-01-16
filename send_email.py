@@ -31,7 +31,7 @@ def send_email_img(to, img_search, player_details):
         player_details["image"].save(player_img_path)
 
         msgRoot = MIMEMultipart("related")
-        msgRoot["Subject"] = "EDB Players Lookalike Discovery with EDB Postgres AI 🌟"
+        msgRoot["Subject"] = "Football player look-alike inside…"
         msgRoot["From"] = st.secrets["email"]["email_from"]
         msgRoot["To"] = to
 
@@ -42,39 +42,51 @@ def send_email_img(to, img_search, player_details):
                 <img src="cid:image3" alt="EDB Postgres AI Logo" width="150" style="display: block; margin: 0 auto;">
             </a>
             <br><br>
-            <h2 style="text-align: center;">Discover Your Football Player Lookalike!</h2>
-            <p style="text-align: center; font-size: 16px;">We found a match for your photo! Here's your football player lookalike:</p>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <h3 style="color: #007BFF;">{player_details["name"]}</h3>
-                <img src="cid:image2" alt="Football Player" width="200" style="border-radius: 10px;">
+            <h2 style="text-align: center;">Here’s your football player lookalike:</h2>
+
+            <!-- Centered side-by-side images using a table -->
+            <table style="margin: 0 auto; text-align: center; width: 100%; max-width: 600px;">
+                <tr>
+                    <td style="text-align: center; vertical-align: top; padding: 10px;">
+                        <h4>Your Search Image:</h4>
+                        <img src="cid:image1" alt="Search Image" style="height: 200px; width: auto; border-radius: 10px;">
+                    </td>
+                    <td style="text-align: center; vertical-align: top; padding: 10px;">
+                        <h4>Matched Footballer:</h4>
+                        <img src="cid:image2" alt="Football Player" style="height: 200px; width: auto; border-radius: 10px;">
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Player details -->
+            <div style="padding: 20px; background-color: #f0f0f5; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                <h1 style="text-align: center; color: black;">{player_details["name"]}</h1>
+                <h3 style="text-align: center; color: black; margin-bottom: 0px;">{str(round(player_details["similarity"] * 100, 2))}%</h3>
+                <h4 style="text-align: center; color: black; margin-top: 0px; margin-bottom: 20px;"><b>Similarity Match</b></h4>
+                <p style="text-align: center; color: black; margin-top: 30px;"><b>Date of Birth:</b> {player_details["date_of_birth"]}</p>
+                <p style="text-align: center; color: black;"><b>Place of Birth:</b> {', '.join(filter(None, [player_details["city_of_birth"], player_details["country_of_birth"]]))}</p>
+                <p style="text-align: center; color: black;"><b>Height:</b> {('{:,.2f}m'.format(player_details["height"] / 100) if player_details["height"] is not None else "No Info")}</p>
+                <p style="text-align: center; color: black;"><b>Position:</b> {player_details['position']}</p>
+                <p style="text-align: center; color: black;"><b>Current Club:</b> {player_details["club_name"]}</p>
+                <p style="text-align: center; color: black;"><b>Joined:</b> {player_details["joined_on"] or "No Info"}</p>
+                <p style="text-align: center; color: black;"><b>League:</b> {', '.join(player_details["competitions_names"]) or "No Info"}</p>
+                <p style="text-align: center; color: black;"><b>Market Value: $</b>{('{:,.2f}'.format(player_details['market_value']) if player_details['market_value'] is not None else "No Info")}</p>
             </div>
-            
-            <div style="margin: 20px;">
-                <h4>Player Details:</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><b>Date of Birth:</b> {player_details["date_of_birth"]}</li>
-                    <li><b>Place of Birth:</b> {player_details["city_of_birth"]}, {player_details["country_of_birth"]}</li>
-                    <li><b>Height:</b> {('{:,.2f}m'.format(player_details["height"]/100) if player_details["height"] is not None else "No Info")}m</li>
-                    <li><b>Position:</b> {player_details["position"]}</li>
-                    <li><b>Current club:</b> {player_details["club_name"]}</li>
-                    <li><b>Joined On:</b> {player_details["joined_on"]}</li>
-                    <li><b>Market Value:</b> ${('{:,.2f}'.format(player_details['market_value']) if player_details['market_value'] is not None else "No Info")}</li>
-                </ul>
+
+            <!-- Footer text -->
+            <div style="margin-top: 20px;">
+                <p>This is just a glimpse of what our EDB Postgres AI platform can do—delivering powerful, AI-driven insights and applications at scale.</p>
+                <p>Discover how EDB can transform your data into actionable intelligence while maintaining sovereignty and security. Learn more about EDB Postgres AI and explore the technology behind the game <a href="https://www.enterprisedb.com/workload/postgres-for-ai" style="color: #007BFF;">here</a>.</p>
             </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <h4>Your Search Image:</h4>
-                <img src="cid:image1" alt="Search Image" width="200" style="border-radius: 10px;">
-            </div>
-            
+
             <footer style="text-align: center; font-size: 10px; color: gray; margin-top: 20px;">
                 <img src="cid:image3" alt="EDB Logo" width="150">
                 <p>Discover the power of AI with EDB Postgres!</p>
-                <p>Copyright © 2024 EDB, Inc.</p>
+                <p>Copyright © 2025 EDB, Inc.</p>
             </footer>
         </div>
         """
+
 
         msgHtml = MIMEText(html, "html")
         msgRoot.attach(msgHtml)
