@@ -257,28 +257,27 @@ elif choice == "Picture":
             )
             for row in st.session_state.images_result:
                 container = st.container()
-                col1, col2 = container.columns([1.5, 3])
+                col1, col2, _, _ = container.columns([1, 2, 1.5, 1])
                 with col1:
-                    st.image(row["image_url"], width=400, use_column_width=True)
+                    st.image(row["image_url"], use_column_width=True)
                 with col2:
                     st.markdown(
                         f"""
-                        <div style="padding: 20px; background-color: #f0f0f5; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
-                            <h1 style="text-align: center; color: black;">{row["name"]}</h1>
-                            <h3 style="text-align: center; color: black; margin-bottom: 0px;">{str(round(row["similarity"] * 100, 2))}%</h3>
-                            <h4 style="text-align: center; color: black; margin-top: 0px; margin-bottom: 20px;"><b>Similarity Match</b></h4>
-                            <p style="text-align: center; color: black;  margin-top: 30px;"><b>Date of Birth:</b> {row["date_of_birth"]} </p>
-                            <p style="text-align: center; color: black;">
+                        <div style="padding: 5px; background-color: #f0f0f5; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <h1 style="text-align: center; color: black; font-size: 30px; margin-top: 0px; margin-bottom: 0px;">{row["name"]}</h1>
+                            <p style="text-align: center; color: black; font-size: 20px; margin-top: 0px; margin-bottom: 0px;"><b>{str(round(row["similarity"] * 100, 2))}% Similarity Match</b></p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 5px; margin-bottom: 0px;"><b>Date of Birth:</b> {row["date_of_birth"]} </p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Place of Birth:</b> {', '.join(filter(None, [row["city_of_birth"], row["country_of_birth"]]))}
                             </p>
-                            <p style="text-align: center; color: black;">
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Height:</b> {('{:,.2f}m'.format(row["height"]/100) if row["height"] is not None else "No Info")} 
                             </p>
-                            <p style="text-align: center; color: black;"><b>Position:</b> {row['position']} </p>
-                            <p style="text-align: center; color: black;"><b>Current Club:</b> {row["club_name"]}</p>
-                            <p style="text-align: center; color: black;"><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                            <p style="text-align: center; color: black;"><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
-                            <p style="text-align: center; color: black;">
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Position:</b> {row['position']} </p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Current Club:</b> {row["club_name"]}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Market Value: $</b>{('{:,.2f}'.format(row['market_value']) if row['market_value'] is not None else "No Info")} 
                             </p>
                         </div>
@@ -349,28 +348,27 @@ elif choice == "Webcam":
             )
             for row in st.session_state.images_result:
                 container = st.container()
-                col1, col2 = container.columns([1.5, 3])
+                col1, col2, _, _ = container.columns([1, 2, 1.5, 1])
                 with col1:
-                    st.image(row["image_url"], width=400, use_column_width=True)
+                    st.image(row["image_url"], width=300, use_column_width=True)
                 with col2:
                     st.markdown(
                         f"""
-                        <div style="padding: 20px; background-color: #f0f0f5; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
-                            <h1 style="text-align: center; color: black;">{row["name"]}</h1>
-                            <h3 style="text-align: center; color: black; margin-bottom: 0px;">{str(round(row["similarity"] * 100, 2))}%</h3>
-                            <h4 style="text-align: center; color: black; margin-top: 0px; margin-bottom: 20px;"><b>Similarity Match</b></h4>
-                            <p style="text-align: center; color: black;  margin-top: 30px;"><b>Date of Birth:</b> {row["date_of_birth"]} </p>
-                            <p style="text-align: center; color: black;">
+                        <div style="padding: 5px; background-color: #f0f0f5; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <h1 style="text-align: center; color: black; font-size: 30px; margin-top: 0px; margin-bottom: 0px;">{row["name"]}</h1>
+                            <p style="text-align: center; color: black; font-size: 20px; margin-top: 0px; margin-bottom: 0px;"><b>{str(round(row["similarity"] * 100, 2))}% Similarity Match</b></p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 5px; margin-bottom: 0px;"><b>Date of Birth:</b> {row["date_of_birth"]} </p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Place of Birth:</b> {', '.join(filter(None, [row["city_of_birth"], row["country_of_birth"]]))}
                             </p>
-                            <p style="text-align: center; color: black;">
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Height:</b> {('{:,.2f}m'.format(row["height"]/100) if row["height"] is not None else "No Info")} 
                             </p>
-                            <p style="text-align: center; color: black;"><b>Position:</b> {row['position']} </p>
-                            <p style="text-align: center; color: black;"><b>Current Club:</b> {row["club_name"]}</p>
-                            <p style="text-align: center; color: black;"><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                            <p style="text-align: center; color: black;"><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
-                            <p style="text-align: center; color: black;">
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Position:</b> {row['position']} </p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Current Club:</b> {row["club_name"]}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Market Value: $</b>{('{:,.2f}'.format(row['market_value']) if row['market_value'] is not None else "No Info")} 
                             </p>
                         </div>
