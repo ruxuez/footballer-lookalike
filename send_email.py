@@ -1,38 +1,25 @@
-#! /usr/bin/python
-
 import smtplib
 import ssl
 from datetime import datetime
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
+import io
 import streamlit as st
 
-# Setup port number and servr name
-
+# Setup port number and server name
 smtp_port = st.secrets["email"]["smtp_port"]
 smtp_server = st.secrets["email"]["smtp_server"]
-
 pswd = st.secrets["email"]["password"]
-
+email_from = st.secrets["email"]["email_from"]
+user_name = st.secrets["email"]["user_name"]
+email_password = st.secrets["email"]["password"]
 
 def send_email_img(to, img_search, player_details):
     try:
-        # Save the images locally for attachment
-        img_search_path = (
-            f"./images/search_{to}_{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
-        )
-        player_img_path = (
-            f"./images/player_{to}_{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
-        )
-
-        img_search.save(img_search_path)
-        player_details["image"].save(player_img_path)
-
         msgRoot = MIMEMultipart("related")
         msgRoot["Subject"] = "Football player look-alike inside…"
-        msgRoot["From"] = st.secrets["email"]["email_from"]
+        msgRoot["From"] = email_from
         msgRoot["To"] = to
 
         # Create the body of the message.
@@ -86,46 +73,51 @@ def send_email_img(to, img_search, player_details):
             </footer>
         </div>
         """
-
-
         msgHtml = MIMEText(html, "html")
         msgRoot.attach(msgHtml)
 
-        # Attach images to email
-        with open(img_search_path, "rb") as f:
-            msgImg1 = MIMEImage(f.read())
+        # Convert img_search to a BytesIO object
+        img_search_io = io.BytesIO()
+        img_search.save(img_search_io, format="PNG")
+        img_search_io.seek(0)
+
+        # Attach the search image to the email
+        msgImg1 = MIMEImage(img_search_io.read())
         msgImg1.add_header("Content-ID", "<image1>")
-        msgImg1.add_header("Content-Disposition", "inline", filename=img_search_path)
+        msgImg1.add_header("Content-Disposition", "inline", filename="search_image.png")
         msgRoot.attach(msgImg1)
 
-        with open(player_img_path, "rb") as f:
-            msgImg2 = MIMEImage(f.read())
+        # Convert player image to BytesIO object
+        player_img_io = io.BytesIO()
+        player_details["image"].save(player_img_io, format="PNG")
+        player_img_io.seek(0)
+
+        # Attach the player image to the email
+        msgImg2 = MIMEImage(player_img_io.read())
         msgImg2.add_header("Content-ID", "<image2>")
-        msgImg2.add_header("Content-Disposition", "inline", filename=player_img_path)
+        msgImg2.add_header("Content-Disposition", "inline", filename="player_image.png")
         msgRoot.attach(msgImg2)
 
-        # Attach EDB logo
+        # Attach EDB logo (same as before)
         with open("source/edb_tagline_grey.png", "rb") as f:
             msgLogo = MIMEImage(f.read())
         msgLogo.add_header("Content-ID", "<image3>")
-        msgLogo.add_header(
-            "Content-Disposition", "inline", filename="source/edb_tagline_grey.png"
-        )
+        msgLogo.add_header("Content-Disposition", "inline", filename="source/edb_tagline_grey.png")
         msgRoot.attach(msgLogo)
 
         # Send email
         simple_email_context = ssl.create_default_context()
-        smtp_server = st.secrets["email"]["smtp_server"]
-        smtp_port = st.secrets["email"]["smtp_port"]
-        email_from = st.secrets["email"]["email_from"]
-        email_password = st.secrets["email"]["password"]
 
-        with smtplib.SMTP(smtp_server, smtp_port) as server:
-            server.starttls(context=simple_email_context)
-            server.login(email_from, email_password)
-            server.sendmail(email_from, to, msgRoot.as_string())
+        try:
+            with smtplib.SMTP(smtp_server, smtp_port) as server:
+                server.starttls(context=simple_email_context)  # Secure the connection
+                server.login(user_name, email_password)  # Use SES SMTP credentials
+                server.sendmail(email_from, to, msgRoot.as_string())  # Send the email
 
-        print(f"Email successfully sent to - {to}")
+            print(f"Email successfully sent to - {to}")
+        
+        except Exception as e:
+            print(f"Failed to send email: {e}")
 
     except Exception as e:
         print(f"Failed to send email: {e}")
