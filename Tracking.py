@@ -33,7 +33,7 @@ st.sidebar.image("source/edb_tagline_grey.png")
 
 # Sidebar elements for user input and display
 st.sidebar.text("")
-menu = ["Home", "Picture", "Webcam"]
+menu = ["Webcam", "Picture"]
 choice = st.sidebar.selectbox("Input type", menu)
 
 # Sidebar setup for filters and input
