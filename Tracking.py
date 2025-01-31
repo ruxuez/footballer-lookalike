@@ -176,7 +176,7 @@ selected_genders = st.sidebar.selectbox("Select Gender", genders_options)
 
 # Sidebar form for email input and submission
 with st.sidebar.form("my_form", clear_on_submit=True):
-    input_email = st.text_input("Email")
+    input_email = st.text_input("Send your results! Enter your email address:")
     submitted = st.form_submit_button("Send", disabled=st.session_state.disabled)
 
 
