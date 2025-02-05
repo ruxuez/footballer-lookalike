@@ -276,7 +276,7 @@ elif choice == "Picture":
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Position:</b> {row['position']} </p>
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Current Club:</b> {row["club_name"]}</p>
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>League:</b> {(', '.join(row["competitions_names"]) if row["competitions_names"] != [None] else "No Info")}</p>
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Market Value: $</b>{('{:,.2f}'.format(row['market_value']) if row['market_value'] is not None else "No Info")} 
                             </p>
@@ -367,7 +367,7 @@ elif choice == "Webcam":
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Position:</b> {row['position']} </p>
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Current Club:</b> {row["club_name"]}</p>
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>Joined:</b> {row["joined_on"] or "No Info"}</p>
-                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>League:</b> {', '.join(row["competitions_names"]) or "No Info"}</p>
+                            <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;"><b>League:</b> {(', '.join(row["competitions_names"]) if row["competitions_names"] != [None] else "No Info")}</p>
                             <p style="text-align: center; color: black; font-size: 15px; margin-top: 0px; margin-bottom: 0px;">
                                 <b>Market Value: $</b>{('{:,.2f}'.format(row['market_value']) if row['market_value'] is not None else "No Info")} 
                             </p>

@@ -88,13 +88,13 @@ def find_similar_faces(facenet, face, country="Any", competition="Any", gender="
     query = """SELECT p.name, p.nationality, p.gender, city_of_birth, country_of_birth, date_of_birth, position, 
                 club_name, joined_on, height, market_value,
                 array_agg(c.name) AS competitions_names,
-                image_url, 1-(image_embedding <=> '{emb}')/(sqrt(512)*2) as similarity
+                image_url, 1 - (image_embedding <=> '{emb}') as similarity
                 FROM all_players_embeddings p
-                JOIN competitions c
+                LEFT JOIN competitions c
                 ON c.id = ANY(p.competitions)
                 {where_clause}
                 GROUP BY p.name, p.player_id, p.nationality, p.gender, city_of_birth, country_of_birth, date_of_birth, position, 
-                club_name, joined_on, height, market_value, image_url, similarity
+                club_name, joined_on, height, market_value, image_url, image_embedding
                 ORDER BY similarity desc LIMIT 1;""".format(
         emb=emb, where_clause=where_clause
     )
