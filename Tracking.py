@@ -71,29 +71,19 @@ country_options = [
 # Competitions filter - single-select
 competitions_options = [
     "Any",
-    "AFC Champions League Elite",
-    "Bardzraguyn khumb",
+    "Football Legends",
     "Egyptian Premier League",
     "Oman Professional League",
     "Premier League",
-    "Premier League 2",
-    "Premier League Closing Round",
-    "Premier League Opening Round",
-    "Premyer Liqa",
     "Saudi Pro League",
     "Scottish Premiership",
     "Thai League",
-    "UAE Pro League",
     "UEFA Champions League",
-    "UEFA Champions League Qualifying",
     # Women competitions
     "Super League",
     "WE League",
     "WK League",
-    "Women’s Championship",
-    "Women’s League",
-    "Women’s Premier Division",
-    "Women’s Premiership",
+    "UEFA Women’s Champions League",
     "Women’s Super League",
 ]
 
