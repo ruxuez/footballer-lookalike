@@ -104,14 +104,14 @@ with st.sidebar.form("my_form", clear_on_submit=True):
 # Home Page logic
 if choice == "Home":
     st.title(
-        "Celebrity Look-Alike Finder: AI-Powered Footballer Matchmaking with PostgreSQL MPP and pgvector"
+        "Celebrity Look-Alike Finder: AI-Powered Footballer Matchmaking with  EDB Postgres AI for Greenplum Workloads and pgvector"
     )
     st.markdown(
         """
         ## About this application
         This application leverages AI technology to identify Footballer look-alikes. 
         It uses facial recognition to match images uploaded by users with footballer faces.
-        It integrates **EDB Postgres MPP** and the **pgvector** extension for AI-powered search functionality.
+        It integrates **EDB Postgres AI for Greenplum Workloads** and the **pgvector** extension for AI-powered search functionality.
         
         ### Features:
         - Upload a photo for celebrity look-alike matching.
@@ -126,7 +126,7 @@ elif choice == "Picture":
     st.write(
         """
     <div style="font-size: 25px;">
-    <b>Leveraging EDB Postgres MPP and pgvector extension for AI-powered Search.</b>
+    <b>Leveraging EDB Postgres AI for Greenplum Workloads and pgvector extension for AI-powered Search.</b>
     </div>
     """,
         unsafe_allow_html=True,
@@ -226,7 +226,7 @@ elif choice == "Webcam":
     st.write(
         """
     <div style="font-size: 25px;">
-    <b>Leveraging EDB Postgres MPP and pgvector extension for AI-powered Search.</b>
+    <b>Leveraging EDB Postgres AI for Greenplum Workloads and pgvector extension for AI-powered Search.</b>
     </div>
     """,
         unsafe_allow_html=True,
