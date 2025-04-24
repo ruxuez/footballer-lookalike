@@ -72,6 +72,7 @@ country_options = [
 competitions_options = [
     "Any",
     "Football Legends",
+    "Bundesliga",
     "Egyptian Premier League",
     "Oman Professional League",
     "Premier League",
